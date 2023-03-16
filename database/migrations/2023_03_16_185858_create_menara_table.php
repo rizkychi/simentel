@@ -25,8 +25,7 @@ class CreateMenaraTable extends Migration
             $table->string('alamat')->nullable();
             $table->double('tinggi_menara', 5, 2);
             $table->double('tinggi_tumpuan', 5, 2)->nullable();
-            $table->string('keterangan')->nullable();
-            $table->date('tgl_survey')->nullable();
+            $table->text('keterangan')->nullable();
             $table->boolean('is_valid')->default(0);
             $table->boolean('is_rekom')->default(0);
             $table->boolean('is_imb')->default(0);
