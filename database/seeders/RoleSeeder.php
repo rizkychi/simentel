@@ -15,9 +15,9 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insertOrIgnore([
-            ['id' => 1, 'name' => 'admin'],
-            ['id' => 2, 'name' => 'operator'],
-            ['id' => 3, 'name' => 'publik']
+            ['id' => 1, 'role' => 'admin'],
+            ['id' => 2, 'role' => 'operator'],
+            ['id' => 3, 'role' => 'publik']
         ]);
     }
 }

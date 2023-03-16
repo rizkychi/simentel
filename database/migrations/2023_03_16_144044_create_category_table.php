@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->tinyInteger('id')->primary();
-            $table->string('role');
+        Schema::create('category', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('category');
+            $table->timestamps();
         });
 
-        Artisan::call('db:seed', [
-            '--class' => 'RoleSeeder',
-            '--force' => true
+        Artisan::call( 'db:seed', [
+            '--class' => 'CategorySeeder',
+            '--force' => true 
         ]);
     }
 
@@ -31,6 +32,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('category');
     }
 }

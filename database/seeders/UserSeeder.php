@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
     {
         // Dummy admin
         DB::table('users')->insert([
-            ['username' => 'admin', 'password' => bcrypt('admin'), 'email' => 'admin@admin.com', 'roles_id' => 1],
-            ['username' => 'operator', 'password' => bcrypt('operator'), 'email' => 'operator@operator.com', 'roles_id' => 2],
-            ['username' => 'publik', 'password' => bcrypt('publik'), 'email' => 'publik@publik.com', 'roles_id' => 3],
+            ['username' => 'admin', 'user' => 'Admin', 'password' => bcrypt('admin'), 'email' => 'admin@admin.com', 'roles_id' => 1],
+            ['username' => 'operator', 'user' => 'Operator', 'password' => bcrypt('operator'), 'email' => 'operator@operator.com', 'roles_id' => 2],
+            ['username' => 'publik', 'user' => 'Publik', 'password' => bcrypt('publik'), 'email' => 'publik@publik.com', 'roles_id' => 3],
         ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateWilDesaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('wil_desa', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->unique();
-            $table->string('user');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->tinyInteger('roles_id');
-            $table->string('url_photo')->nullable();
+            $table->integer('kecamatan_id')->unsigned();
+            $table->string('desa_kode');
+            $table->string('desa');
             $table->timestamps();
         });
+
+        Artisan::call( 'db:seed', [
+            '--class' => 'WDesaSeeder',
+            '--force' => true 
+        ]);
     }
 
     /**
@@ -32,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('wil_desa');
     }
 }
