@@ -23,6 +23,11 @@ class CreateUsersTable extends Migration
             $table->string('url_photo')->nullable();
             $table->timestamps();
         });
+
+        Artisan::call( 'db:seed', [
+            '--class' => 'userSeeder',
+            '--force' => true 
+        ]);
     }
 
     /**

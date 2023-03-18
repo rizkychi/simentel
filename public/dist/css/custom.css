@@ -1,0 +1,48 @@
+.sidebar-green {
+    background-color: #1dd1a1;
+}
+
+.user-panel {
+    border: none;
+    white-space: normal;
+}
+
+.user-panel img {
+    width: 5rem;
+}
+
+.nav-pills .nav-link {
+    color: white;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    /* color: rgba(255, 255, 255, 0.7); */
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: rgba(0, 0, 0, 0.125);
+}
+
+.btn-primary,.swal2-styled.swal2-confirm {
+    background-color: #1dd1a1 !important;
+    border-color: #1dd1a1 !important;
+}
+
+.btn-primary:hover{
+    background-color: #10ac84 !important;
+    border-color: #10ac84 !important;
+}
+
+a {
+    color: #1dd1a1;
+}
+
+a:hover {
+    color: #10ac84;
+}
+
+.card-primary.card-outline {
+    border-color: #1dd1a1;
+}
