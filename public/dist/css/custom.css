@@ -1,5 +1,10 @@
+:root {
+    --primary: #1dd1a1;
+    --primary-dark: #10ac84;
+}
+
 .sidebar-green {
-    background-color: #1dd1a1;
+    background-color: var(--primary);
 }
 
 .user-panel {
@@ -26,23 +31,48 @@
 }
 
 .btn-primary,.swal2-styled.swal2-confirm {
-    background-color: #1dd1a1 !important;
-    border-color: #1dd1a1 !important;
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
 .btn-primary:hover{
-    background-color: #10ac84 !important;
-    border-color: #10ac84 !important;
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
 }
 
 a {
-    color: #1dd1a1;
+    color: var(--primary);
 }
 
 a:hover {
-    color: #10ac84;
+    color: var(--primary-dark);
 }
 
 .card-primary.card-outline {
-    border-color: #1dd1a1;
+    border-color: var(--primary);
+}
+
+.card-header:after {
+    content: none;
+}
+
+.fas-custom {
+    font-size: .75rem;
+}
+
+.paging-custom .page-link {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    color: var(--primary);
+}
+
+.paging-custom .page-item.active .page-link {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #fff !important;
+}
+
+.paging-custom .page-item.disabled .page-link {
+    color: #6c757d !important;
 }

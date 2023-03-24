@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
+    <!-- Datatables -->
+    <link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.css" rel="stylesheet"/>
     <!-- Custom theme style -->
     <link rel="stylesheet" href="{{ asset('/dist/css/custom.css') }}">
 </head>
@@ -150,6 +152,10 @@
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <!-- SweetAlert 2 -->
     <script src="{{ asset('/vendor/sweetalert/sweetalert.all.js') }}"></script>
+    <!-- Data Tables -->
+    <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.js"></script>
+
+    @stack('scripts')
 
     <!-- Custom Script -->
     <script>
@@ -168,6 +174,33 @@
                 }
             })
         })
+
+        let dt_dom = 
+            "<'row justify-content-between'"+
+                "<'col-auto text-sm'l>"+
+                "<'col-auto'B>"+
+                "<'col-auto text-sm'f>"+
+            ">"+
+            "<'row dt-table'"+
+                "<'col-md-12'tr>"+
+            ">"+
+            "<'row justify-content-between'"+
+                "<'col-auto text-sm'i>"+
+                "<'text-right col-auto paging-custom'p>"+
+            ">"
+        let dt_button = [{
+                    text: '<i class="fas fa-plus mr-1 fas-custom"></i> Tambah',
+                    className: 'btn btn-primary btn-sm'
+                },
+                {
+                    text: 'Orange',
+                    className: 'btn btn-primary btn-sm'
+                },
+                {
+                    text: 'Green',
+                    className: 'btn btn-primary btn-sm'
+                }
+            ]
     </script>
 </body>
 
