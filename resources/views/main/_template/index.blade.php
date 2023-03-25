@@ -1,6 +1,6 @@
 @extends('_template.master-main')
 
-@section('page_title', 'Menu Master')
+@section('page_title', 'Template Master')
 
 @section('content')
 
@@ -9,17 +9,17 @@
 
         <div class="card card-primary card-outline">
             <div class="card-header d-flex justify-content-between">
-                <h5 class="m-0">Daftar Menu</h5>
-                <a href="{{ route('master.menu.show.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-plus"></i> Tambah Menu
+                <h5 class="m-0">Daftar Template</h5>
+                <a href="" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i> Tambah Template
                 </a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped table-sm dt-menu">
+                <table class="table table-bordered table-striped table-sm dt-Template">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Menu</th>
+                            <th>Nama Template</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -29,7 +29,7 @@
                             <td>Home</td>
                             <td>Aksi</td>
                             </tr>
-                            @endfor
+                        @endfor
                             <!-- Table body -->
                     </tbody>
                 </table>
@@ -46,10 +46,10 @@
 @push('scripts')
 <script type="text/javascript">
     $(function() {
-        var table = $('.dt-menu').DataTable({
+        var table = $('.dt-Template').DataTable({
             // processing: true,
             // serverSide: true,
-            // ajax: "{{ route('master.menu.json') }}",
+            // ajax: "",
             // columns: [{
             //         data: 'DT_RowIndex',
             //         name: 'DT_RowIndex'

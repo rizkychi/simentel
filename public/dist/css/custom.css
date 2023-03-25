@@ -12,10 +12,6 @@
     white-space: normal;
 }
 
-.user-panel img {
-    width: 5rem;
-}
-
 .nav-pills .nav-link {
     color: white;
 }
@@ -26,16 +22,18 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: rgba(0, 0, 0, 0.125);
 }
 
-.btn-primary,.swal2-styled.swal2-confirm {
+.btn-primary,
+.swal2-styled.swal2-confirm {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: var(--primary-dark) !important;
     border-color: var(--primary-dark) !important;
 }
@@ -50,6 +48,10 @@ a:hover {
 
 .card-primary.card-outline {
     border-color: var(--primary);
+}
+
+.card-primary:not(.card-outline)>.card-header {
+    background-color: var(--primary);
 }
 
 .card-header:after {
@@ -76,3 +78,120 @@ a:hover {
 .paging-custom .page-item.disabled .page-link {
     color: #6c757d !important;
 }
+
+/* icheck */
+.icheck-primary>input:first-child:not(:checked):not(:disabled):hover+input[type=hidden]+label::before,
+.icheck-primary>input:first-child:not(:checked):not(:disabled):hover+label::before {
+    border-color: var(--primary)
+}
+
+.icheck-primary>input:first-child:checked+input[type=hidden]+label::before,
+.icheck-primary>input:first-child:checked+label::before {
+    background-color: var(--primary);
+    border-color: var(--primary)
+}
+
+/* /.icheck */
+
+/* Menu Tree View */
+.tree,
+.tree ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.tree ul {
+    margin-left: 1em;
+    position: relative
+}
+
+.tree ul ul {
+    margin-left: .5em
+}
+
+.tree ul:before {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid
+}
+
+.tree li {
+    margin: 0;
+    padding: 0 1em;
+    line-height: 2em;
+    color: var(--primary-dark);
+    font-weight: 500;
+    position: relative
+}
+
+.tree ul li:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid;
+    margin-top: -1px;
+    position: absolute;
+    top: 1em;
+    left: 0
+}
+
+.tree ul li:last-child:before {
+    background: #fff;
+    height: auto;
+    top: 1em;
+    bottom: 0
+}
+
+.indicator {
+    margin-right: 0px;
+}
+
+.tree li a {
+    text-decoration: none;
+    color: var(--primary-dark);
+    padding: 2px 6px;
+    border-radius: .25rem;
+}
+
+.tree li a.active,
+.tree li a:hover {
+    background: var(--primary-dark);
+    color: #fff !important;
+}
+
+.tree li a.disabled {
+    color: #7f8c8d !important;
+}
+
+.tree li a.active.disabled,
+.tree li a.disabled:hover {
+    background: #7f8c8d;
+    color: #fff !important;
+}
+
+.tree li button,
+.tree li button:active,
+.tree li button:focus {
+    text-decoration: none;
+    color: var(--primary-dark);
+    border: none;
+    background: transparent;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    outline: 0;
+}
+
+.level-badge {
+    color: var(--primary-dark);
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+/* /.Menu Tree View */

@@ -20,7 +20,6 @@ class CreateMenuTable extends Migration
             $table->string('icon_type')->default('fas');
             $table->string('icon')->nullable();
             $table->string('level');
-            $table->boolean('dropdown')->default(0);
             $table->tinyInteger('roles_id');
             $table->boolean('active')->default(1);
             $table->timestamps();

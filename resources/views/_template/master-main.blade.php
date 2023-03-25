@@ -12,15 +12,20 @@
     <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{ asset('/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2-bootstrap4.min.css') }}">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.css" />
+    <!-- OverlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
-    <!-- Datatables -->
-    <link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.css" rel="stylesheet"/>
     <!-- Custom theme style -->
     <link rel="stylesheet" href="{{ asset('/dist/css/custom.css') }}">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <!-- Sweetalert2 -->
     @include('sweetalert::alert')
 
@@ -30,6 +35,9 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link">@yield('page_title')</a>
                 </li>
@@ -52,67 +60,17 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-green elevation-2">
+        <aside class="main-sidebar sidebar-green elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('dist/img/Logo_Kota_Yogyakarta_small.png') }}" alt="AdminLTE Logo" class="brand-image img-circle">
+            <a href="" class="brand-link">
+                <img src="{{ asset('dist/img/Logo_Kota_Yogyakarta_small.png') }}" alt="SIMentel Logo" class="brand-image img-circle">
                 <span class="brand-text text-white">SIMentel</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 text-center">
-                    <img src="{{ asset('dist/img/avatar5.png') }}" class="img-circle" alt="User Image">
-                    <a href="#" class="d-block text-white mt-2">Alexander Pierce</a>
-                </div>
-
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="fas fa-tachometer-alt nav-icon"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Level 1
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Level 1</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                @include('_template.sidebar-menu-main')
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -152,55 +110,59 @@
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <!-- SweetAlert 2 -->
     <script src="{{ asset('/vendor/sweetalert/sweetalert.all.js') }}"></script>
-    <!-- Data Tables -->
+    <!-- Select2 -->
+    <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- Datatables -->
     <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.js"></script>
+    <!-- OverlayScrollbars -->
+    <script src="{{ asset('/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <!-- Custom Alert -->
+    <script src="{{ asset('/dist/js/custom-alert.js') }}"></script>
 
     @stack('scripts')
 
     <!-- Custom Script -->
     <script>
-        $('#btn-logout').on('click', function(e) {
-            e.preventDefault()
-            const url = $(this).attr('href')
-            Swal.fire({
-                title: 'Yakin?',
-                text: "Kamu akan logout dari aplikasi ini",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, Logout!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url
+        let dt_dom =
+            "<'row justify-content-between'" +
+            "<'col-auto text-sm'l>" +
+            "<'col-auto'B>" +
+            "<'col-auto text-sm'f>" +
+            ">" +
+            "<'row dt-table'" +
+            "<'col-md-12'tr>" +
+            ">" +
+            "<'row justify-content-between'" +
+            "<'col-auto text-sm'i>" +
+            "<'text-right col-auto paging-custom'p>" +
+            ">"
+        let dt_button = [{
+                text: '<i class="fas fa-plus mr-1 fas-custom"></i> Tambah',
+                className: 'btn btn-primary btn-sm'
+            },
+            {
+                text: 'Orange',
+                className: 'btn btn-primary btn-sm'
+            },
+            {
+                text: 'Green',
+                className: 'btn btn-primary btn-sm'
+            }
+        ]
+
+        $('#forms').on('submit', function(e) {
+            $('input.required').each(function(i, obj) {
+                if (!$(this).val()) {
+                    e.preventDefault()
+                    $(this).addClass('is-invalid')
+                } else {
+                    $(this).removeClass('is-invalid')
                 }
             })
         })
 
-        let dt_dom = 
-            "<'row justify-content-between'"+
-                "<'col-auto text-sm'l>"+
-                "<'col-auto'B>"+
-                "<'col-auto text-sm'f>"+
-            ">"+
-            "<'row dt-table'"+
-                "<'col-md-12'tr>"+
-            ">"+
-            "<'row justify-content-between'"+
-                "<'col-auto text-sm'i>"+
-                "<'text-right col-auto paging-custom'p>"+
-            ">"
-        let dt_button = [{
-                    text: '<i class="fas fa-plus mr-1 fas-custom"></i> Tambah',
-                    className: 'btn btn-primary btn-sm'
-                },
-                {
-                    text: 'Orange',
-                    className: 'btn btn-primary btn-sm'
-                },
-                {
-                    text: 'Green',
-                    className: 'btn btn-primary btn-sm'
-                }
-            ]
+        //Initialize Select2 Elements
+        $('.select2').select2()
     </script>
 </body>
 
