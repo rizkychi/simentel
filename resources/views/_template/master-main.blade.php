@@ -160,6 +160,17 @@
                 className: 'btn btn-primary btn-sm'
             }
         ]
+        let dt_index = {
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            createdCell: cell => $(cell).addClass('text-right pr-2')
+        }
+        let dt_action = {
+            data: 'action',
+            name: 'action',
+            orderable: false,
+            searchable: false
+        }
 
         $('#forms').on('submit', function(e) {
             $('input.required').each(function(i, obj) {

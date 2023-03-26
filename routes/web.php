@@ -27,9 +27,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('master')->group(function () {
         // Menu
-        Route::resource('menu', 'Master\MenuController', ['as' => 'master'])->only(['index', 'store']);
         Route::prefix('menu')->group(function () {
             Route::get('{roles}/delete/{id}', 'Master\MenuController@delete')->name('master.menu.delete');
         });
+        Route::resource('menu', 'Master\MenuController', ['as' => 'master'])->only(['index', 'store']);
+
+        // Category
+        Route::prefix('category')->group(function () {
+            Route::get('json', 'Master\CategoryController@json')->name('master.category.json');
+            Route::get('{category}/delete', 'Master\CategoryController@delete')->name('master.category.delete');
+        });
+        Route::resource('category', 'Master\CategoryController', ['as' => 'master'])->except(['destroy']);
     });
 });

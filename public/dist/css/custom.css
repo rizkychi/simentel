@@ -84,6 +84,18 @@ a:hover {
     color: #6c757d !important;
 }
 
+[id*="dtx"] {
+    width: 100% !important;
+}
+
+[id*="dtx"] th:first-child {
+    width: 32px;
+}
+
+[id*="dtx"] tr td:last-child {
+    width: 50px;
+}
+
 /* icheck */
 .icheck-primary>input:first-child:not(:checked):not(:disabled):hover+input[type=hidden]+label::before,
 .icheck-primary>input:first-child:not(:checked):not(:disabled):hover+label::before {
