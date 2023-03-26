@@ -35,7 +35,7 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item d-lg-none">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
@@ -69,9 +69,20 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex flex-column justify-content-center">
+                    <div class="image text-center">
+                        <img src="{{ Auth::getUser()->url_photo ? asset(Auth::getUser()->url_photo) : asset('/dist/img/avatar.png') }}" class="img-circle" alt="Avatar">
+                    </div>
+                    <div class="info text-center">
+                        <a href="#" class="d-block text-white">{{ Auth::getUser()->user }}</a>
+                    </div>
+                </div>
+                <!-- /.Sidebar user -->
+
                 <!-- Sidebar Menu -->
                 @include('_template.sidebar-menu-main')
-                <!-- /.sidebar-menu -->
+                <!-- /.sidebar menu -->
             </div>
             <!-- /.sidebar -->
         </aside>

@@ -12,6 +12,11 @@
     white-space: normal;
 }
 
+.user-panel img {
+    height: auto;
+    width: 5rem;
+}
+
 .nav-pills .nav-link {
     color: white;
 }
