@@ -124,6 +124,8 @@
     <!-- Select2 -->
     <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
     <!-- Datatables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/fh-3.3.2/r-2.4.1/sl-1.6.2/datatables.min.js"></script>
     <!-- OverlayScrollbars -->
     <script src="{{ asset('/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
@@ -148,17 +150,29 @@
             "<'text-right col-auto paging-custom'p>" +
             ">"
         let dt_button = [{
-                text: '<i class="fas fa-plus mr-1 fas-custom"></i> Tambah',
-                className: 'btn btn-primary btn-sm'
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel mr-1 fas-custom"></i> Excel',
+                className: 'btn btn-success btn-sm',
+                exportOptions: {
+                    columns: [ ':visible:not(:last-child)' ]
+                }
             },
             {
-                text: 'Orange',
-                className: 'btn btn-primary btn-sm'
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf mr-1 fas-custom"></i> PDF',
+                className: 'btn btn-danger btn-sm',
+                exportOptions: {
+                    columns: [ ':visible:not(:last-child)' ]
+                }
             },
             {
-                text: 'Green',
-                className: 'btn btn-primary btn-sm'
-            }
+                extend: 'print',
+                text: '<i class="fas fa-print mr-1 fas-custom"></i> Print',
+                className: 'btn btn-info btn-sm',
+                exportOptions: {
+                    columns: [ ':visible:not(:last-child)' ]
+                }
+            },
         ]
         let dt_index = {
             data: 'DT_RowIndex',
