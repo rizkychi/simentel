@@ -38,5 +38,21 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('{category}/delete', 'Master\CategoryController@delete')->name('master.category.delete');
         });
         Route::resource('category', 'Master\CategoryController', ['as' => 'master'])->except(['destroy']);
+
+        // Wilayah
+        Route::prefix('wilayah')->group(function () {
+            // Kabupaten
+            Route::prefix('kabupaten')->group(function () {
+                Route::get('json', 'Master\Wilayah\KabupatenController@json')->name('master.wilayah.kabupaten.json');
+            });
+            Route::resource('kabupaten', 'Master\Wilayah\KabupatenController', ['as' => 'master.wilayah'])->only(['index']);
+
+            // Kemantren
+            Route::prefix('{kabupaten}/kemantren')->group(function () {
+                Route::get('json', 'Master\Wilayah\KemantrenController@json')->name('master.wilayah.kemantren.json');
+                Route::get('{kemantren}/delete', 'Master\Wilayah\KemantrenController@delete')->name('master.wilayah.kemantren.delete');
+            });
+            Route::resource('{kabupaten}/kemantren', 'Master\Wilayah\KemantrenController', ['as' => 'master.wilayah'])->except(['destroy']);
+        });
     });
 });
