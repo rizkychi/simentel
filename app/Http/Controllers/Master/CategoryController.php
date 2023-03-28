@@ -28,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('main.master.category.form')
+            ->with('title', $this->title)
+            ->with('page_title', 'Tambah ' . $this->title);
     }
 
     /**
@@ -39,7 +41,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create new object
+        $cat = new Category();
+        $cat->category = $request->category;
+
+        // Store into database
+        if ($cat->save()) {
+            return redirect()->route('master.category.index')->with('success', 'Penambahan ' . $this->title . ' baru berhasil');
+        } else {
+            return back()->with('errors', 'Terjadi kesalahan, silahkan coba kembali')->withInput();
+        }
     }
 
     /**
@@ -50,7 +61,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->route('master.category.edit', ['category' => $id]);
     }
 
     /**
@@ -61,7 +72,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat = Category::findOrFail($id);
+        return view('main.master.category.form')
+            ->with('title', $this->title)
+            ->with('page_title', 'Ubah ' . $this->title)
+            ->with('data', $cat);
     }
 
     /**
@@ -73,7 +88,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Finding id
+        $cat = Category::findOrFail($id);
+        
+        // Update data
+        $cat->category = $request->category;
+
+        if ($cat->update()) {
+            return redirect()->route('master.category.index')->with('success', 'Perubahan ' . $this->title . ' baru berhasil');
+        } else {
+            return back()->with('errors', 'Terjadi kesalahan, silahkan coba kembali')->withInput();
+        }
     }
 
     /**
