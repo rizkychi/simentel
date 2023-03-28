@@ -28,6 +28,7 @@ $rute = isset($data) ? route('', ['template' => $data->id]) : route('');
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('') }}" class="btn btn-secondary">Batal</a>
                 </form>
                 <!-- /.form -->
             </div>

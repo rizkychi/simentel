@@ -18,7 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('main.master.category.index');
+        return view('main.master.category.index')
+            ->with('title', $this->title)
+            ->with('page_title', $this->title . ' Master');
     }
 
     /**
@@ -90,7 +92,7 @@ class CategoryController extends Controller
     {
         // Finding id
         $cat = Category::findOrFail($id);
-        
+
         // Update data
         $cat->category = $request->category;
 

@@ -149,6 +149,7 @@
             "<'col-auto text-sm'i>" +
             "<'text-right col-auto paging-custom'p>" +
             ">"
+        let dt_wrap = "<div style='overflow:auto; width:100%;position:relative;'></div>"
         let dt_button = [{
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel mr-1 fas-custom"></i> Excel',

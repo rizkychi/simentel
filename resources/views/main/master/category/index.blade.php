@@ -1,6 +1,6 @@
 @extends('_template.master-main')
 
-@section('page_title', 'Kategori Menara Master')
+@section('page_title', $page_title)
 
 @section('content')
 
@@ -9,26 +9,24 @@
 
         <div class="card card-primary card-outline">
             <div class="card-header d-flex justify-content-between">
-                <h5 class="m-0">Daftar Kategori Menara</h5>
+                <h5 class="m-0">Daftar {{ $title }}</h5>
                 <a href="{{ route('master.category.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-plus mr-1"></i>Tambah Kategori Menara
+                    <i class="fas fa-plus mr-1"></i>Tambah {{ $title }}
                 </a>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="dtx" class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Kategori Menara</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Table body -->
-                        </tbody>
-                    </table>
-                </div>
+                <table id="dtx" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama {{ $title }}</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table body -->
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- /.card -->
@@ -48,6 +46,9 @@
             ajax: "{{ route('master.category.json') }}",
             dom: dt_dom,
             buttons: dt_button,
+            initComplete: function(settings, json) {
+                $(this).wrap(dt_wrap);
+            },
             columns: [
                 dt_index,
                 {

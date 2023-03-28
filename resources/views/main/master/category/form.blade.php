@@ -28,6 +28,7 @@ $rute = isset($data) ? route('master.category.update', ['category' => $data->id]
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('master.category.index') }}" class="btn btn-secondary">Batal</a>
                 </form>
                 <!-- /.form -->
             </div>
