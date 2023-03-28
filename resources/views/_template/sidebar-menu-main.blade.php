@@ -5,7 +5,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         @foreach ($list_menu as $menu)
             <li class="nav-item nav-parent">
-                <a href="{{ $menu->route ? route($menu->route) : '' }}" class="nav-link {{ $name == $menu->route ? 'active':'' }}">
+                <a href="{{ $menu->route ? route($menu->route) : '#' }}" class="nav-link {{ $name == $menu->route ? 'active':'' }}">
                     <i class="nav-icon {{ $menu->icon_type ?? 'fas' }} {{ $menu->icon ?? 'fa-circle' }}"></i>
                     <p>
                         {{ $menu->menu }}
@@ -18,7 +18,7 @@
                     <ul class="nav nav-treeview">
                         @foreach ($menu->child as $child)
                             <li class="nav-item">
-                                <a href="{{ $child->route ? route($child->route) : '' }}" class="nav-link nav-child {{ $name == $child->route ? 'active':'' }}">
+                                <a href="{{ $child->route ? route($child->route) : '#' }}" class="nav-link nav-child {{ $name == $child->route ? 'active':'' }}">
                                     <i class="{{ $child->icon_type ?? 'fas' }} {{ $child->icon ?? 'fa-circle' }} nav-icon"></i>
                                     <p>{{ $child->menu }}</p>
                                 </a>
