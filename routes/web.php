@@ -53,6 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('{kemantren}/delete', 'Master\Wilayah\KemantrenController@delete')->name('master.wilayah.kemantren.delete');
             });
             Route::resource('{kabupaten}/kemantren', 'Master\Wilayah\KemantrenController', ['as' => 'master.wilayah'])->except(['destroy']);
+
+            // Kelurahan
+            Route::prefix('{kemantren}/kelurahan')->group(function () {
+                Route::get('json', 'Master\Wilayah\KelurahanController@json')->name('master.wilayah.kelurahan.json');
+                Route::get('{kelurahan}/delete', 'Master\Wilayah\KelurahanController@delete')->name('master.wilayah.kelurahan.delete');
+            });
+            Route::resource('{kemantren}/kelurahan', 'Master\Wilayah\KelurahanController', ['as' => 'master.wilayah'])->except(['destroy']);
         });
     });
 });

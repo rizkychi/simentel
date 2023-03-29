@@ -27,7 +27,7 @@ class KabupatenController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $cols = '<div class="d-flex">';
-                    $cols .= '<a href="' . route('master.wilayah.kemantren.index', ['kabupaten' => $row->id]) . '" class="btn-sm btn-primary mx-1 text-nowrap" title="Kemantren"><i class="fas fa-map-marker-alt mr-1"></i>Kemantren</a>';
+                    $cols .= '<a href="' . route('master.wilayah.kemantren.index', ['kabupaten' => $row->id]) . '" class="btn-sm btn-info mx-1 text-nowrap" title="Kemantren"><i class="fas fa-map-marker-alt mr-1"></i>Kemantren</a>';
                     $cols .= '</div>';
                     return $cols;
                 })

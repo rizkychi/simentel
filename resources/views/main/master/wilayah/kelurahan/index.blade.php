@@ -9,12 +9,12 @@
 
         <div class="card card-primary card-outline">
             <div class="card-header d-flex justify-content-between">
-                <h5 class="m-0">Daftar {{ $title }}. Kab/Kota {{ $kabupaten->kabupaten }}</h5>
+                <h5 class="m-0">Daftar {{ $title }}. Kemantren {{ $kemantren->kecamatan }} </h5>
                 <div class="d-flex flex-column flex-sm-row">
-                    <a href="{{ route('master.wilayah.kabupaten.index') }}" class="btn btn-info btn-sm text-nowrap mr-0 mr-sm-2 mb-1 mb-sm-0">
-                        <i class="fas fa-list-ul mr-1"></i>Daftar Kabupaten
+                    <a href="{{ route('master.wilayah.kemantren.index', ['kabupaten' => $kemantren->kabupaten_id]) }}" class="btn btn-info btn-sm text-nowrap mr-0 mr-sm-2 mb-1 mb-sm-0">
+                        <i class="fas fa-list-ul mr-1"></i>Daftar Kemantren
                     </a>
-                    <a href="{{ route('master.wilayah.kemantren.create', ['kabupaten' => request()->kabupaten]) }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('master.wilayah.kelurahan.create', ['kemantren' => request()->kemantren]) }}" class="btn btn-primary btn-sm">
                         <i class="fas fa-plus mr-1"></i>Tambah {{ $title }}
                     </a>
                 </div>
@@ -49,7 +49,7 @@
         var table = $('#dtx').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('master.wilayah.kemantren.json', ['kabupaten'=> request()->kabupaten]) }}",
+            ajax: "{{ route('master.wilayah.kelurahan.json', ['kemantren'=> request()->kemantren]) }}",
             dom: dt_dom,
             buttons: dt_button,
             initComplete: function(settings, json) {
@@ -58,12 +58,12 @@
             columns: [
                 dt_index,
                 {
-                    data: 'kecamatan_kode',
-                    name: 'kecamatan_kode'
+                    data: 'desa_kode',
+                    name: 'desa_kode'
                 },
                 {
-                    data: 'kecamatan',
-                    name: 'kecamatan'
+                    data: 'desa',
+                    name: 'desa'
                 },
                 dt_action
             ],

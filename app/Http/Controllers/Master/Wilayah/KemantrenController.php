@@ -17,11 +17,13 @@ class KemantrenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($kabupaten)
     {
+        $kab = WilKabupaten::findOrFail($kabupaten);
         return view('main.master.wilayah.kemantren.index')
             ->with('title', $this->title)
-            ->with('page_title', $this->title . ' Master');
+            ->with('page_title', $this->title . ' Master')
+            ->with('kabupaten', $kab);
     }
 
     /**
@@ -137,6 +139,7 @@ class KemantrenController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $cols = '<div class="d-flex">';
+                    $cols .= '<a href="' . route('master.wilayah.kelurahan.index', ['kemantren' => $row->id]) . '" class="btn-sm btn-info mx-1 text-nowrap" title="Kelurahan"><i class="fas fa-map-marker-alt mr-1"></i>Kelurahan</a>';
                     $cols .= '<a href="' . route('master.wilayah.kemantren.edit', ['kabupaten' => $row->kabupaten_id, 'kemantren' => $row->id]) . '" class="btn-sm btn-primary mx-1" title="Edit"><i class="fas fa-pen"></i></a>';
                     $cols .= '<a href="" data-url="' . route('master.wilayah.kemantren.delete', ['kabupaten' => $row->kabupaten_id, 'kemantren' => $row->id]) . '" data-text="' . $this->title . '" class="btn-sm btn-danger mx-1" onclick="deleteConfirm(event, this)" title="Hapus"><i class="fas fa-trash"></i></a>';
                     $cols .= '</div>';
